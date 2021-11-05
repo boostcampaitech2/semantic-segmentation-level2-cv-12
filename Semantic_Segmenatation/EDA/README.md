@@ -4,13 +4,13 @@
 
 #### class 별 annotation 개수 분포
 
-![sample]()
+![sample](https://github.com/boostcampaitech2/semantic-segmentation-level2-cv-12/blob/master/Semantic_Segmenatation/EDA/images/annotation_per_category.png)
 
 : class 별 annotation 개수는 Paper, Plastic Bag이 9311, 7643개로 비교적 많았고, Battery, Clothing이 63, 177개로 비교적 적은 수를 보였다.
 
 #### image 별 annotation 개수 분포
 
-![sample]()
+![sample](https://github.com/boostcampaitech2/semantic-segmentation-level2-cv-12/blob/master/Semantic_Segmenatation/EDA/images/annotation_per_image.png)
 
 : image 별 annotation 개수는 1~12개 범위의 image가 전체의 77.4%를 차지했다. annotation이 가장 많은 이미지는 70개, 가장 적은 image는 0개의 annotation을 가졌다.
 
