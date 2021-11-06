@@ -7,8 +7,10 @@ import os
 import albumentations as A
 from albumentations.pytorch import ToTensorV2
 
-from dataset import CustomDataLoader
 import segmentation_models_pytorch as smp
+
+from dataset import CustomDataLoader
+from utils import add_hist, label_accuracy_score
 
 # seed 고정
 random_seed = 21
@@ -27,8 +29,14 @@ dataset_path = '/opt/ml/segmentation/input/data'
 train_path = dataset_path + '/train.json'
 val_path = dataset_path + '/val.json'
 
+Categories = [
+    "background", "general trash", "paper", "paper pack", "metal", "glass",
+    "plastic", "Styrofoam", "Plastic bag", "Battery", "Clothing"
+]
 
 # collate_fn needs for batch
+
+
 def collate_fn(batch):
     return tuple(zip(*batch))
 
@@ -138,7 +146,7 @@ def validation(epoch, model, data_loader, criterion, device):
 
         acc, acc_cls, mIoU, fwavacc, IoU = label_accuracy_score(hist)
         IoU_by_class = [{classes: round(IoU, 4)} for IoU, classes in zip(
-            IoU, sorted_df['Categories'])]
+            IoU, Categories)]
 
         avrg_loss = total_loss / cnt
         print(f'Validation #{epoch}  Average Loss: {round(avrg_loss.item(), 4)}, Accuracy : {round(acc, 4)}, \
