@@ -1,1 +1,1 @@
-https://github.com/lucasb-eyer/pydensecrf
+- how to set up :https://github.com/lucasb-eyer/pydensecrf
